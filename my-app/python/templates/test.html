@@ -6,6 +6,15 @@
 </head>
 <body>
 
+<!-- <style>
+body {
+	background-image: url('edmund.png');
+	background-repeat:no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+</style> -->
+
 <form  method="POST" action="/">
 
     <row>
@@ -24,13 +33,29 @@
 
     <row>
         <input type="date" name="date"/>
-
-        <input type="submit" value="Submit">
+	<br>
+	<br>
+        <input type="submit" class="Search" value="Search" style="height: 25px; width: 100px">
     </row>
 
 </form>
 
-<p>{{text}}</p>
+<form action="//www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result2" method="get">
+    <p>Here are the available Flights:</p>
+    <select name="fruit" multiple>
+    <option value ="none">Nothing</option>
+    <option value ="guava">Guava</option>
+    <option value ="lychee">Lychee</option>
+    <option value ="papaya">Papaya</option>
+    <option value ="watermelon">Watermelon</option>
+    </select> 
+    <p><input type="submit" value="Submit"></p>
+    </form>
+    <h3>Result:</h3>
+    <iframe name="result2" style="height:100px;width:200px;"></iframe>
+    
+
+<!-- <p>Dearly Beloved, I assume the results of the search go here but I've no idea</p> -->
 
 </select>
 </body>
