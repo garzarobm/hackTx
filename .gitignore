@@ -1,2 +1,4 @@
  node_modules/
  *.json
+my-app/node_modules/
+my-app/node_modules
