@@ -1,8 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FlavorForm from './AppRebecca';
-
 
 function App() {
   return (
@@ -14,7 +12,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="/AppRebecca"
+          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
