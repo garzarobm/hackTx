@@ -1,37 +1,25 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Button } from "reactstrap";
-import { Dropdown } from "reactstrap";
-import { ButtonDropdown } from "reactstrap";
-import { DropdownToggle } from "reactstrap";
-import { DropdownItem } from "reactstrap";
-import { useState } from "react";
-import { DropdownMenu } from "reactstrap";
+import React, {useState} from 'react';
+//import logo from './logo.svg';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import {Container, Row, Col} from 'reactstrap';
+import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+
 
 function App() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggle2 = () => setDropdownOpen(prevState => !prevState);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      {/* <header className="App-header"> */}
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button color="danger">Danger!</Button>
-        <Dropdown>hello</Dropdown>
-        <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle caret>Button Dropdown</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem header>Header</DropdownItem>
-            <DropdownItem disabled>Action</DropdownItem>
-            <DropdownItem>Another Action</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Another Action</DropdownItem>
-          </DropdownMenu>
-        </ButtonDropdown>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -39,10 +27,69 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
-      </header>
+        </a> */}
+        <Container>
+          <br />
+          <br />
+          
+          <Row>
+            
+            <Col>
+              <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle caret>
+                  Source
+                  </DropdownToggle>
+                <DropdownMenu>
+                  {/* <DropdownItem header>Header</DropdownItem>
+                  <DropdownItem>Some Action</DropdownItem>
+                  <DropdownItem disabled>Action (disabled)</DropdownItem>
+                  <DropdownItem divider /> */}
+                  <DropdownItem>DFW</DropdownItem>
+                  <DropdownItem>Hobby</DropdownItem>
+                  {/* <DropdownItem>Quo Action</DropdownItem> */}
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+
+            <Col>
+              <Dropdown isOpen={dropdownOpen} toggle={toggle2}>
+                <DropdownToggle caret2>
+                  Destination
+                  </DropdownToggle>
+                <DropdownMenu>
+                  {/* <DropdownItem header>Header</DropdownItem>
+                  <DropdownItem>Some Action</DropdownItem>
+                  <DropdownItem disabled>Action (disabled)</DropdownItem>
+                  <DropdownItem divider /> */}
+                  <DropdownItem>DFW</DropdownItem>
+                  <DropdownItem>Hobby</DropdownItem>
+                  {/* <DropdownItem>Quo Action</DropdownItem> */}
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+           
+          </Row>
+          <br />
+          <br />
+
+          <Row>
+            <ListGroup>
+              <ListGroupItem>Cras justo odio</ListGroupItem>
+              <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+              <ListGroupItem>Morbi leo risus</ListGroupItem>
+              <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
+              <ListGroupItem>Vestibulum at eros</ListGroupItem>
+            </ListGroup>
+          </Row>
+        </Container>
+      
+        {/* </header> */}
+
     </div>
+    
   );
 }
+
+
 
 export default App;
