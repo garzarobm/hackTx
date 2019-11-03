@@ -1,4 +1,37 @@
-from flask import Flask, request
+# from flask import Flask, render_template, request
+# app = Flask(__name__)
+
+
+# @app.route('/', methods=['GET', 'POST'])
+
+# def mainFun():
+#     colours = ['DFW', 'New York']
+#     colours2 = ['Hobby']
+#     if request.method == 'GET':
+        
+#         return render_template('test.html', colours=colours, colours2 = colours2)
+
+#     if request.method == 'POST':
+#         source = request.form['source']
+#         destination = request.form['destination']
+#         date = request.form['date']
+
+#         #sendToErrol(source,destination,date)
+
+#         data = str(source) + str(destination) + str(date)
+#         return render_template('test.html', colours=colours, colours2 = colours2, text = data)
+
+
+# #def sendToErrol(source, destination, date):
+
+
+# if __name__ == "__main__":
+#     app.run()   
+
+# @app.route('/hello')
+# def hello():
+#     return 'Hello, World!'
+from flask import Flask, render_template, request
 from darksky import forecast
 from datetime import datetime
 from datetime import timedelta
@@ -7,6 +40,7 @@ import numpy as np
 import urllib.parse
 import urllib.request
 
+
 app = Flask(__name__)
 
 aa_url = 'http://antoniodidnothingwrong-hacktx.herokuapp.com/flights?'
@@ -14,11 +48,29 @@ key = '605880dc58036d59e4a24c7f244a7a09'
 
 
 @app.route('/', methods=['GET', 'POST'])
-def result():
+def mainFun():
+    colours = ['DFW', 'ORD', 'LAX', 'JFK' ]
+    colours2 = ['DFW', 'ORD', 'LAX', 'JFK']
     if request.method == 'GET':
-        origin = request.args.get('origin', None)
-        destination = request.args.get('destination', None)
-        date = request.args.get('date', None)
+        
+        return render_template('test.html', colours=colours, colours2 = colours2)
+
+    if request.method == 'POST':
+        source = request.form['source']
+        destination = request.form['destination']
+        date = request.form['date']
+    
+        result(source,destination)
+
+        data = str(source) + str(destination) + str(date)
+        return render_template('test.html', colours=colours, colours2 = colours2, text = data)
+
+
+def result(origin, destination):
+    #if request.method == 'GET':
+        #origin = request.args.get('origin', None)
+        #destination = request.args.get('destination', None)
+        date = None
 
         if date is None:
             year = 2020
@@ -87,3 +139,4 @@ def result():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
