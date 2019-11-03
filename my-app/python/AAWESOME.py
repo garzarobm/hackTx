@@ -10,7 +10,7 @@ import urllib.request
 app = Flask(__name__)
 
 aa_url = 'http://antoniodidnothingwrong-hacktx.herokuapp.com/flights?'
-key = '4cfe9d9e76056affcf1de949a6439192'
+key = 'b58ec2ed945fe9389e778e1c66a1ae43'
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -47,7 +47,7 @@ def result(origin, destination, date):
 
         flights = []
 
-        for json_response in json_responses[:1]:
+        for json_response in json_responses[:3]:
             origin_latitude = json_response['origin']['location']['latitude']
             origin_longitude = json_response['origin']['location']['longitude']
             destination_latitude = json_response['destination']['location']['latitude']
@@ -69,12 +69,13 @@ def result(origin, destination, date):
             print(f'Duration: {duration}')
             """
 
+            segment_time = 30
             hour = np.random.randint(0, 24)
             minute = np.random.randint(0, 60)
             dt = datetime.strptime(date, '%Y-%m-%d') + timedelta(hours=hour) + timedelta(minutes=minute)
-            time_segments = duration // 15
+            time_segments = duration // segment_time
 
-            times = [dt + timedelta(minutes=i * 15) for i in range(time_segments + 1)]
+            times = [dt + timedelta(minutes=i * segment_time) for i in range(time_segments + 1)]
             latitude_rate = (destination_latitude - origin_latitude) / time_segments
             longitude_rate = (destination_longitude - origin_longitude) / time_segments
             latitude_points = [origin_latitude + latitude_rate * i for i in range(time_segments + 1)]
