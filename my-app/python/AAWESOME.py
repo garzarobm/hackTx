@@ -10,7 +10,7 @@ import urllib.request
 app = Flask(__name__)
 
 aa_url = 'http://antoniodidnothingwrong-hacktx.herokuapp.com/flights?'
-key = '605880dc58036d59e4a24c7f244a7a09'
+key = '4cfe9d9e76056affcf1de949a6439192'
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -27,7 +27,7 @@ def mainFun():
 
         flights = result(source, destination, date)
 
-        return render_template('test.html', colours=colours, colours2=colours2, flights=flights)
+        return render_template('test.html', colours=colours, colours2=colours2, flights=flights, date=date)
 
 
 def result(origin, destination, date):
@@ -104,13 +104,12 @@ def result(origin, destination, date):
                         percent += 1
                     elif 'cloudy' in icon:
                         percent += 3
-                    ret_times.append(times[i].strftime("%Y-%m-%d %H:%M:%S"))
+                    ret_times.append(times[i].strftime("%I:%M %p"))
                     ret_icons.append(icon)
 
             flight['times'] = ret_times
             flight['icons'] = ret_icons
             flight['percent'] = str(percent)
-            print(flight)
 
             flights.append(flight)
         return flights

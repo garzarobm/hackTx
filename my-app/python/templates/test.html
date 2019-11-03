@@ -1,70 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Dropdown</title>
-</head>
-<body>
 
-<!-- <style>
-body {
-	background-image: url('edmund.png');
-	background-repeat:no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-}
-</style> -->
+    <style>
+      .topnav {
+        background-color: #333;
+        overflow: hidden;
+      }
 
-<br/>
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
 
-<form  method="POST" action="/">
+      /* Change the color of links on hover */
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
 
-    <row>
+      /* Add a color to the active/current link */
+      .topnav a.active {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      /* Float four columns side by side */
+      .column {
+        float: left;
+        padding: 0 10px;
+      }
+
+      /* Remove extra left and right margins, due to padding */
+      .row {
+        height: 100px;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Responsive columns */
+      @media screen and (max-width: 600px) {
+        .column {
+          width: 100%;
+          display: block;
+        }
+      }
+
+      /* Style the counter cards */
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #f1f1f1;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a class="active" href="#">Home</a>
+    </div>
+
+    <br />
+
+    <form method="POST" action="/">
+      <div class="row">
         <select name="source" method="GET" action="/">
-            {% for colour in colours %}
-            <option value= "{{colour}}" SELECTED>{{colour}}</option>"
-            {% endfor %}
+          {% for colour in colours %}
+          <option value="{{ colour }}" SELECTED>{{ colour }}</option
+          >" {% endfor %}
         </select>
-        
+
         <select name="destination" method="GET" action="/">
-            {% for colour2 in colours2 %}
-            <option value= "{{colour2}}" SELECTED>{{colour2}}</option>"
-            {% endfor %}
+          {% for colour2 in colours2 %}
+          <option value="{{ colour2 }}" SELECTED>{{ colour2 }}</option
+          >" {% endfor %}
         </select>
-    </row>
+      </div>
 
-    <row>
-        <input type="date" name="date"/>
-	<br>
-	<br>
-        <input type="submit" class="Search" value="Search" style="height: 25px; width: 100px">
-    </row>
+      <div class="row">
+        <input type="date" name="date" />
+        <br />
+        <br />
+        <input
+          type="submit"
+          class="Search"
+          value="Search"
+          style="height: 25px; width: 100px"
+        />
+      </div>
+    </form>
 
-</form>
+    <br />
+    <br />
+    {%if date is not none%}
+    <h1>{{ date }}</h1>
+    {%endif%} {% for flight in flights %}
 
-<br/>
-<br/>
+    <h1>Flight {{ flight["flightNumber"] }}</h1>
+    <p>Chance of cancellation</p>
+    <p>{{ flight["percent"] }}</p>
 
-<table style="width:100%">
-    <tr>
-        <th>Flight Number</th>
-        <th>Weather Data</th>
-        <th>Chance of Cancellation</th>
-    </tr>
-    {% for flight in flights %}
-    <tr>
-        <td>{{flight['flightNumber']}}</td>
-        {% for time in flight['times'] %}
-            <td>{{time}} {{flight['icons'][loop.index0]}}</td>
-        {% endfor %}
-        <td>{{ flight['percent'] }}</td>
-    </tr>
+    <div class="row">
+      {% for time in flight['times'] %}
+      <div class="column">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title"></span>
+            <p>
+              {{ time }}
+            </p>
+            <img
+              src="{{ url_for('static', filename=flight['icons'][loop.index0]+'.png')}}"
+            />
+            <p>
+              {{ flight["icons"][loop.index0] }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
     {% endfor %}
-</table>
-    
 
-<!-- <p>{{text}}</p> -->
-
-</select>
-</body>
+    <!-- <p>{{text}}</p> -->
+  </body>
 </html>
