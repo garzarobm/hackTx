@@ -15,6 +15,8 @@ body {
 }
 </style> -->
 
+<br/>
+
 <form  method="POST" action="/">
 
     <row>
@@ -40,22 +42,26 @@ body {
 
 </form>
 
-<form action="//www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result2" method="get">
-    <p>Here are the available Flights:</p>
-    <select name="fruit" multiple>
-    <option value ="none">Nothing</option>
-    <option value ="guava">Guava</option>
-    <option value ="lychee">Lychee</option>
-    <option value ="papaya">Papaya</option>
-    <option value ="watermelon">Watermelon</option>
-    </select> 
-    <p><input type="submit" value="Submit"></p>
-    </form>
-    <h3>Result:</h3>
-    <iframe name="result2" style="height:100px;width:200px;"></iframe>
+<br/>
+<br/>
+
+<table style="width:100%">
+    <tr>
+        <th>Flight Number</th>
+        <th>Weather Data</th>
+    </tr>
+    {% for flight in flights %}
+    <tr>
+        <td>{{flight['flightNumber']}}</td>
+        {% for time in flight['times'] %}
+            <td>{{time}} {{flight['icons'][loop.index0]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
     
 
-<!-- <p>Dearly Beloved, I assume the results of the search go here but I've no idea</p> -->
+<!-- <p>{{text}}</p> -->
 
 </select>
 </body>
