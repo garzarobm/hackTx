@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dropdown</title>
+</head>
+<body>
+
+<form  method="POST" action="/">
+
+    <row>
+        <select name="source" method="GET" action="/">
+            {% for colour in colours %}
+            <option value= "{{colour}}" SELECTED>{{colour}}</option>"
+            {% endfor %}
+        </select>
+        
+        <select name="destination" method="GET" action="/">
+            {% for colour2 in colours2 %}
+            <option value= "{{colour2}}" SELECTED>{{colour2}}</option>"
+            {% endfor %}
+        </select>
+    </row>
+
+    <row>
+        <input type="date" name="date"/>
+
+        <input type="submit" value="Submit">
+    </row>
+
+</form>
+
+<p>{{text}}</p>
+
+</select>
+</body>
+</html>
