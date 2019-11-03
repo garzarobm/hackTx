@@ -25,10 +25,9 @@ def mainFun():
         destination = request.form['destination']
         date = request.form['date']
 
-        result(source, destination, date)
+        flights = result(source, destination, date)
 
-        data = str(source) + str(destination) + str(date)
-        return render_template('test.html', colours=colours, colours2=colours2, text=data)
+        return render_template('test.html', colours=colours, colours2=colours2, flights=flights)
 
 
 def result(origin, destination, date):
@@ -83,6 +82,7 @@ def result(origin, destination, date):
 
             ret_times = []
             ret_icons = []
+            percent = 0
 
             for i in range(len(longitude_points)):
                 latitude = latitude_points[i]
@@ -90,11 +90,28 @@ def result(origin, destination, date):
                 cast = forecast(key, latitude, longitude, time=times[i].isoformat())
                 if 'icon' in cast['currently']:
                     icon = cast['currently']['icon']
+                    if 'snow' in icon:
+                        percent += 15
+                    elif 'rain' in icon:
+                        percent += 12
+                    elif 'sleet' in icon:
+                        percent += 10
+                    elif 'wind' in icon:
+                        percent += 7
+                    elif 'fog' in icon:
+                        percent += 4
+                    elif 'partly-cloudy' in icon:
+                        percent += 1
+                    elif 'cloudy' in icon:
+                        percent += 3
                     ret_times.append(times[i].strftime("%Y-%m-%d %H:%M:%S"))
                     ret_icons.append(icon)
 
             flight['times'] = ret_times
             flight['icons'] = ret_icons
+            flight['percent'] = str(percent)
+            print(flight)
+
             flights.append(flight)
         return flights
 

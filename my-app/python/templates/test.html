@@ -49,6 +49,7 @@ body {
     <tr>
         <th>Flight Number</th>
         <th>Weather Data</th>
+        <th>Chance of Cancellation</th>
     </tr>
     {% for flight in flights %}
     <tr>
@@ -56,6 +57,7 @@ body {
         {% for time in flight['times'] %}
             <td>{{time}} {{flight['icons'][loop.index0]}}</td>
         {% endfor %}
+        <td>{{ flight['percent'] }}</td>
     </tr>
     {% endfor %}
 </table>
