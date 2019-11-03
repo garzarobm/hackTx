@@ -104,13 +104,12 @@ def result(origin, destination, date):
                         percent += 1
                     elif 'cloudy' in icon:
                         percent += 3
-                    ret_times.append(times[i].strftime("%Y-%m-%d %H:%M:%S"))
+                    ret_times.append(times[i].strftime("%I:%M %p"))
                     ret_icons.append(icon)
 
             flight['times'] = ret_times
             flight['icons'] = ret_icons
             flight['percent'] = str(percent)
-            print(flight)
 
             flights.append(flight)
         return flights

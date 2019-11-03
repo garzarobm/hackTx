@@ -6,14 +6,12 @@
 </head>
 <body>
 
-<!-- <style>
-body {
-	background-image: url('edmund.png');
-	background-repeat:no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-}
-</style> -->
+<style>
+    img{
+        width:50px;
+        height:50px;
+    }
+</style>
 
 <br/>
 
@@ -55,7 +53,7 @@ body {
     <tr>
         <td>{{flight['flightNumber']}}</td>
         {% for time in flight['times'] %}
-            <td>{{time}} {{flight['icons'][loop.index0]}}</td>
+            <td>{{time}} <img src="{{ url_for('static', filename=flight['icons'][loop.index0]+'.png') }}"> {{ flight['icons'][loop.index0] }}</td>
         {% endfor %}
         <td>{{ flight['percent'] }}</td>
     </tr>
