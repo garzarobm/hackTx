@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdown</title>
+
+    <style>
+      .topnav {
+        background-color: #333;
+        overflow: hidden;
+        text-align: right;
+      }
+
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: right;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      /* Change the color of links on hover */
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      /* Add a color to the active/current link */
+      .topnav a.active {
+        background-color: dodgerblue;
+        align-content: center;
+        color: white;
+      }
+
+      .topnav a.inactive {
+        float: left;
+        color: white;
+        text-align: center;
+      }
+
+      /* Float four columns side by side */
+      .column {
+        float: left;
+        padding: 0 10px;
+      }
+
+      /* Remove extra left and right margins, due to padding */
+      .row {
+        height: auto;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Responsive columns */
+      @media screen and (max-width: 600px) {
+        .bodyContainer {
+          width: 100%;
+          display: block;
+          padding: 1%;
+          margin: 1%;
+        }
+      }
+
+      .center {
+        background-color: #9ec7c7;
+        font-size: 25px;
+        text-align: center;
+        align-items: center;
+        align-self: center;
+      }
+
+      /* Style the counter cards */
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        text-align: center;
+        background-color: #f1f1f1;
+        margin: 10px;
+        max-width: 300px;
+      }
+
+      .cardTitle {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 1%;
+        text-align: center;
+
+        background-color: #f1f1f1;
+        margin: 10px;
+      }
+
+      img {
+        max-width: 30%;
+        height: auto;
+      }
+      .formA {
+        width: 100%;
+        height: 80px;
+      }
+      .left {
+        float: left;
+        text-align: left;
+        margin-left: 25%;
+      }
+      .right {
+        float: right;
+        text-align: right;
+        margin-right: 25%;
+      }
+
+      .select-css {
+        background-color: DodgerBlue;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 8px 30px;
+        border: 2px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+      }
+      .Search {
+        font-size: 20px;
+        padding: 12px 20px;
+        background-color: dodgerblue;
+        color: #ffffff;
+        border: 2px solid transparent;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="center">
+      <div class="topnav">
+        <a class="inactive">AAWESOME</a>
+        <a class="active" href="#">Home</a>
+      </div>
+
+      <br />
+
+      <form method="POST" action="/">
+        <section class="formA">
+          <div class="left">
+            <h2>From Terminal:</h2>
+
+            <select class="select-css" name="source" method="GET" action="/">
+              {% for colour in colours %}
+              <option value="{{ colour }}" SELECTED>{{ colour }}</option
+              >" {% endfor %}
+            </select>
+          </div>
+
+          <div class="right">
+            <h2>To Terminal:</h2>
+
+            <select
+              class="select-css"
+              name="destination"
+              method="GET"
+              action="/"
+            >
+              {% for colour2 in colours2 %}
+              <option value="{{ colour2 }}" SELECTED>{{ colour2 }}</option
+              >" {% endfor %}
+            </select>
+          </div>
+        </section>
+        <br />
+        <br />
+        <br />
+        <div class="center">
+          <h2>Pick date:</h2>
+          <input type="date" name="date" />
+          <br />
+          <br />
+          <input type="submit" class="Search" value="Search" />
+        </div>
+      </form>
+
+      <br />
+      <br />
+      {% for flight in flights %}
+      <div class="bodyContainer">
+        <div class="cardTitle">
+          {%if date is not none%}
+          <h2>{{ date }}</h2>
+          {%endif%}
+
+          <h1>Flight {{ flight["flightNumber"] }}</h1>
+          <p>
+            Chance of delay: <b>{{ flight["percent"] }}%</b>
+          </p>
+        </div>
+        <div class="row">
+          {% for time in flight['times'] %}
+          <div class="column">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title"></span>
+                <p>
+                  {{ time }}
+                </p>
+                <img
+                  src="{{ url_for('static', filename=flight['icons'][loop.index0]+'.png')}}"
+                />
+                <p>
+                  {{ flight["icons"][loop.index0] }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+    <!-- <p>{{text}}</p> -->
+  </body>
+</html>
