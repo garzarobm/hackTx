@@ -10,7 +10,11 @@ import urllib.request
 app = Flask(__name__)
 
 aa_url = 'http://antoniodidnothingwrong-hacktx.herokuapp.com/flights?'
+<<<<<<< HEAD
 key = 'b83b1a21964642d7c104391dc410beb9'
+=======
+key = 'b58ec2ed945fe9389e778e1c66a1ae43'
+>>>>>>> 134d4891d89fcb897242e154e8a1b56cead6adb3
 
 
 @app.route('/', methods=['GET', 'POST'])
