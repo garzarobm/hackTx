@@ -5,11 +5,18 @@
 Our website UI was created by our team using html, CSS, and Javascript. The website pulls from American Airlines API and the Dark Sky API using HTTP GET. The infortamation obtained is weather behavior during time and location of plane while it is on flight. Using the information, we perform analysis and implement an algorithm that predicts likelihood of delay. We hope people could use this information in order to predict whether their flight is likely to delay ahead of time. 
 
 ### Prerequisites
-Knowledge of Google Cloud Services for publishing a website
-Python flask, HTML5, CSS, JavaScript 
+Knowledge of Google Cloud Services for publishing a website.
+
+Python flask, HTML5, CSS, JavaScript.
+ 
 An ethusiasm to learn!
 
 ## Deployment
 Check out our website at https://aawesome.appspot.com/
+
+1. Insert the starting AA terminal
+2. Insert the Terminal to which you will land.
+3. Pick the date of your flight.
+4. Press search and see the weather that will occur on flight!
 
 ![Website Image](etc/websiteImage.png)
