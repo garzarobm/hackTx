@@ -12,7 +12,7 @@ Python flask, HTML5, CSS, JavaScript.
 An ethusiasm to learn!
 
 ## Deployment
-Check out our website at https://aawesome.appspot.com/
+
 
 1. Insert the starting AA terminal
 2. Insert the Terminal to which you will land.
