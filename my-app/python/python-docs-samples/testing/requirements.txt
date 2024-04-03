@@ -14,5 +14,5 @@ webapp2==2.5.2
 google-api-python-client==1.7.11
 google-cloud-core==1.0.3
 gcp-devrel-py-tools==0.0.15
-flask==1.1.1
+flask==2.2.5
 websocket-client==0.56.0
