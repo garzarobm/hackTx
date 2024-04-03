@@ -2,3 +2,4 @@
  *.json
 my-app/node_modules/
 my-app/node_modules
+.vscode/settings.json
