@@ -12,6 +12,6 @@
 # limitations under the License.
 # [START memorystore_requirements]
 Flask==1.1.1
-gunicorn==19.9.0
+gunicorn==22.0.0
 redis==3.3.8
 # [END memorystore_requirements]
